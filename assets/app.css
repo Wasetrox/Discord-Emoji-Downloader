@@ -1,60 +1,122 @@
 /* Genel Arka Plan Ayarı */
 body {
-    background: linear-gradient(135deg, #7289DA, #5865F2); /* Daha hoş geçişli bir arka plan */
-    margin: 2%;
-    min-height: 100vh; /* Sayfa yüksekliğini tam ekran yapar */
+    background: linear-gradient(135deg, #7289DA, #5865F2); /* Geçişli arka plan */
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF; /* Yazı rengi daha iyi uyum sağlaması için beyaz */
-    font-family: Arial, sans-serif;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Konteyner Ayarı */
+.container {
+    background: #2C2F33; /* Daha koyu bir arka plan */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Daha yoğun gölge */
+    max-width: 600px;
+    width: 90%;
+    transition: all 0.3s ease; /* Tüm özelliklerde yumuşak geçiş */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover ile Efekt */
+.container:hover {
+    transform: scale(1.03); /* Hafif büyütme */
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.4); /* Gölge yoğunluğu artırıldı */
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 60%);
+    transform: rotate(-25deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.container:hover::before {
+    opacity: 0.1; /* Hafif parlama efekti */
+}
+
+/* Başlık Stili */
+.container h1 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px; /* Harfler arasında biraz boşluk */
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4); /* Hafif gölge */
+}
+
+/* Paragraf Stili */
+.container p {
+    color: #B9BBBE;
     font-size: 1rem;
+    line-height: 1.7;
+    margin: 15px 0;
+    text-align: center;
 }
 
-/* Mesaj Gizleme */
-#messages div.message {
-    display: none;
-}
-
-/* Link Tasarımı */
+/* Link Stili */
 .link {
-    color: #5865F2;
+    color: #7289DA;
     text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
+    position: relative;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .link:hover {
-    color: #FFFFFF; /* Hover efektiyle renk değişimi */
-    text-shadow: 0 0 5px #5865F2; /* Hafif bir parıltı */
-}
-
-/* Kutucuk Stili */
-.container {
-    background: #2C2F33;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    width: 100%;
-}
-
-.container h1 {
     color: #FFFFFF;
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 15px;
+    text-shadow: 0 0 6px #7289DA; /* Daha belirgin parıltı */
 }
 
-.container p {
-    color: #B9BBBE;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-/* Hover Animasyo */
-.container:hover {
-    transform: scale(1.02); /* Hafif bir büyütme efekti */
+.link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #7289DA;
+    transform: scaleX(0);
+    transform-origin: right;
     transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+    transform: scaleX(1); /* Altında kaydırma efekti */
+    transform-origin: left;
+}
+
+/* Mesajlar */
+#messages div.message {
+    display: none;
+}
+
+/* Buton Stili */
+.button {
+    background-color: #5865F2;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #4752C4;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Hover sırasında gölge artırma */
 }
