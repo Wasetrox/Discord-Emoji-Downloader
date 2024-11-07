@@ -86,6 +86,21 @@
             </form>
         </div>
 
+        <div class="ui inverted tab segment" id="manual" data-tab="manual">
+            <p>Make a GET request to <code>https://discord.com/api/v10/guilds/:id</code>, with <code>:id</code> being the server ID, also make sure you're authorised with your user token. Then copy paste the response JSON data in the textarea below <i>(in which an example is placed)</i>.</p>
+            <p>
+                <div class="ui inverted form">
+                    <div class="field">
+                        <label>Guild Object</label>
+                        <div id="editor" style="height: 350px; width: 100%;"></div>
+                    </div>
+                    <div class="field">
+                        <button name="submit" id="submit" class="ui primary button">Submit</button>
+                    </div>
+                </div>
+            </p>
+        </div>
+
         <div id="messages">
             <div class="ui icon message" id="loading">
                 <i class="notched circle loading icon"></i>
