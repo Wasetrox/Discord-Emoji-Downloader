@@ -1,15 +1,60 @@
+/* Genel Arka Plan Ayarı */
 body {
-    background: #7289DA;
+    background: linear-gradient(135deg, #7289DA, #5865F2); /* Daha hoş geçişli bir arka plan */
     margin: 2%;
-    height: 0% !important;
+    min-height: 100vh; /* Sayfa yüksekliğini tam ekran yapar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF; /* Yazı rengi daha iyi uyum sağlaması için beyaz */
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
 }
 
+/* Mesaj Gizleme */
 #messages div.message {
     display: none;
 }
 
+/* Link Tasarımı */
 .link {
-    color: #7289da;
-    text-decoration: underline;
+    color: #5865F2;
+    text-decoration: none;
     cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.link:hover {
+    color: #FFFFFF; /* Hover efektiyle renk değişimi */
+    text-shadow: 0 0 5px #5865F2; /* Hafif bir parıltı */
+}
+
+/* Kutucuk Stili */
+.container {
+    background: #2C2F33;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+}
+
+.container h1 {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.container p {
+    color: #B9BBBE;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Hover Animasyo */
+.container:hover {
+    transform: scale(1.02); /* Hafif bir büyütme efekti */
+    transition: transform 0.3s ease;
 }
