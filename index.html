@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <title>Discord Emoji İndirici</title>
+    <title>Discord Emoji Downloader</title>
 
     <meta name="author" content="Tiemen" />
-    <meta name="description" content="Bir sunucudaki tüm emojileri bir ZIP dosyasında indirin." />
-    <meta name="keywords" content="discord, emoji, emojiler, discordapp, discord uygulaması, emoji indirici, emoji indir" />
+    <meta name="description" content="Get all emojis from a server in a ZIP file." />
+    <meta name="keywords" content="discord, emoji, emojis, discordapp, discord app, emoji downloader, download emoji" />
     <meta name="theme-color" content="#7289DA" />
 
-    <meta property="og:title" content="Discord Emoji İndirici" />
-    <meta property="og:description" content="Bir sunucudaki tüm emojileri bir ZIP dosyasında indirin." />
+    <meta property="og:title" content="Discord Emoji Downloader" />
+    <meta property="og:description" content="Get all emojis from a server in a ZIP file." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://thatiemsz.github.io/Discord-Emoji-Downloader/" />
 
@@ -22,65 +22,66 @@
 
 <body>
     <div class="ui inverted raised very padded text container segment">
-        <h1 class="ui header">Discord Emoji İndirici</h1>
+        <h1 class="ui header">Discord Emoji Downloader</h1>
 
         <div class="ui inverted secondary pointing menu">
-            <a class="item active" data-tab="default">Varsayılan</a>
+            <a class="item active" data-tab="default">Default</a>
+            <a class="item" data-tab="manual">Manual</a>
         </div>
 
         <div class="ui inverted tab segment active" id="default-1" data-tab="default">
             <div class="ui warning message">
                 <div class="header">
-                    Uyarı: Kullanıcı tokeninizi paylaşırken dikkatli olun!
+                    Warning: be careful, sharing your user token can be dangerous!
                 </div>
-                Bu sayfa, kullanıcı tokeninizi zararlı bir şekilde kullanmaz ve yalnızca Discord ile kimlik doğrulama yapmak, sunucu listenizi ve emojilerini almak için kullanır.<br />
-                (<a href="https://github.com/ThaTiemsz/Discord-Emoji-Downloader" target="_blank">Kaynak kodunu burada bulabilirsiniz</a>)
+                This page does not use your user token in any harmful way and only uses it to authenticate with Discord, fetch your server list and their emojis.<br />
+                (<a href="https://github.com/ThaTiemsz/Discord-Emoji-Downloader" target="_blank">Source can be found here</a>)
             </div>
             <form class="ui inverted form">
                 <div class="field">
-                    <label>Kullanıcı Tokeni <span class="link" onclick="javascript:helpModal();">(?)</span></label>
+                    <label>User Token <span class="link" onclick="javascript:helpModal();">(?)</span></label>
                     <input type="password" name="token" id="token" placeholder="mfa.ABcd1e2Fgh3i-jKlmnoPQRstu4VWx4yz5A6b7cDEFGhiJk8LmNOPqR_sSTUV9XyzabcdeF0Xd" autocomplete="new-password" />
                 </div>
-                <button name="continue" id="continue" class="ui button">Devam</button>
+                <button name="continue" id="continue" class="ui button">Continue</button>
             </form>
         </div>
 
         <div class="ui inverted tab segment" id="default-2" data-tab="default-hide">
             <form class="ui inverted form">
                 <div class="field">
-                    <label>Sunucu</label>
+                    <label>Server</label>
                     <div class="ui fluid search selection dropdown" id="server-select">
                         <input type="hidden" name="server" />
                         <i class="dropdown icon"></i>
-                        <div class="default text">Sunucu Seç</div>
+                        <div class="default text">Select Server</div>
                     </div>
                 </div>
                 <div class="field" id="emojis">
-                    <label>Emojileri seç <span id="emojicount"></span></label>
+                    <label>Select emojis <span id="emojicount"></span></label>
                     <div class="ui fluid multiple search selection dropdown" id="emoji-select">
                         <input type="hidden" name="emojis" />
                         <i class="dropdown icon"></i>
-                        <div class="default text">Emojileri Seç</div>
+                        <div class="default text">Select Emojis</div>
                     </div>
                 </div>
                 <div class="field" id="emojis2">
-                    <label>Emojileri seç <span id="emojicount2"></span></label>
+                    <label>Select emojis <span id="emojicount2"></span></label>
                     <div class="ui fluid multiple search selection dropdown" id="emoji-select2">
                         <input type="hidden" name="emojis2" />
                         <i class="dropdown icon"></i>
-                        <div class="default text">Emojileri Seç</div>
+                        <div class="default text">Select Emojis</div>
                     </div>
                 </div>
                 <div class="field" id="stickers">
-                    <label>Çıkartmaları seç <span id="stickercount"></span></label>
+                    <label>Select stickers <span id="stickercount"></span></label>
                     <div class="ui fluid multiple search selection dropdown" id="sticker-select">
                         <input type="hidden" name="stickers" />
                         <i class="dropdown icon"></i>
-                        <div class="default text">Çıkartma Seç</div>
+                        <div class="default text">Select Sticker</div>
                     </div>
                 </div>
                 <div class="field">
-                    <button name="submit" id="submit" class="ui primary button">Gönder</button>
+                    <button name="submit" id="submit" class="ui primary button">Submit</button>
                 </div>
             </form>
         </div>
@@ -90,9 +91,9 @@
                 <i class="notched circle loading icon"></i>
                 <div class="content">
                     <div class="header" id="loading-header">
-                    Bir dakika
+                    Just a moment
                     </div>
-                    <p id="loading-msg">Emojileri/çıkartmaları topluyoruz.</p>
+                    <p id="loading-msg">Collecting the emojis/stickers for you.</p>
                 </div>
             </div>
 
@@ -100,9 +101,9 @@
                 <i class="smile icon"></i>
                 <div class="content">
                     <div class="header" id="success-header">
-                    Bulundu!
+                    We found them!
                     </div>
-                    <p id="success-msg"><strong id="emoji-count">NaN</strong> emoji ve <strong id="sticker-count">NaN</strong> çıkartma bulundu ve yukarıdaki ZIP dosyasına eklendi.</p>
+                    <p id="success-msg">Found <strong id="emoji-count">NaN</strong> emojis and <strong id="sticker-count">NaN</strong> stickers which are packed in a ZIP file above.</p>
                 </div>
             </div>
 
@@ -110,7 +111,7 @@
                 <i class="warning circle icon"></i>
                 <div class="content">
                     <div class="header" id="error-header">
-                        Bir hata oluştu
+                        An error occured
                     </div>
                     <p id="error-msg"></p>
                 </div>
@@ -119,28 +120,28 @@
 
         <div class="ui basic modal">
             <div class="ui icon header">
-                Kullanıcı tokeninizi nasıl alabilirsiniz
+                How to get your user token
             </div>
             <div class="content">
                 <p>
                     <ul>
-                        <li>Discord masaüstü uygulamasını açın veya Discord web sitesine <a href="https://discord.com/app" target="_blank">buradan</a> giriş yapın.</li>
-                        <li>Chrome Geliştirici Araçlarını <pre>F12</pre> veya <pre>Ctrl + Shift + I</pre> tuş kombinasyonu ile açın.</li>
-                        <li>Konsola yapıştırabilme yeteneğini etkinleştirmek için "<code style="user-select: all;">allow pasting</code>" yazmanız gerekebilir.</li>
+                        <li>Open the Discord desktop app or login on the Discord website <a href="https://discord.com/app" target="_blank">here</a></li>
+                        <li>Open the Chrome Dev Tools with the keyboard shortcut <pre>F12</pre> or <pre>Ctrl + Shift + I</pre></li>
+                        <li>To enable the ability to paste in the console you might need to type "<code style="user-select: all;">allow pasting</code>"</li>
                         <li>
-                            Aşağıdaki kodu yapıştırın ve çalıştırın:
+                            Paste and execute the following snippet:
                             <p>
                                 <code style="user-select: all;">(webpackChunkdiscord_app.push([[''],{},e=&gt;{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=&gt;m?.exports?.default?.getToken!==void 0).exports.default.getToken()</code>
                             </p>
                         </li>
-                        <li>Tokeniniz konsolun altında gösterilecektir. Tırnaklar arasındaki içeriği kopyalayın. Bu sizin kullanıcı tokeninizdir.</li>
+                        <li>Your token will be returned at the bottom of the console. Copy the contents between "". This is your user token.</li>
                     </ul>
                 </p>
             </div>
             <div class="actions">
                 <div class="ui green ok inverted button">
                     <i class="checkmark icon"></i>
-                    Anladım
+                    Got it
                 </div>
             </div>
         </div>
